@@ -12,6 +12,7 @@
 
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-git clone https://github.com/lihaixin/custom_package package/my
+#git clone https://github.com/lihaixin/custom_package package/my
+src-git custom_package https://github.com/lihaixin/custom_package
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
