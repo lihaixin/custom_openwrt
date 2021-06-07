@@ -91,7 +91,5 @@ wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/package/lean/def
 sed -i '$ d' zzz-default-settings
 wget https://raw.githubusercontent.com/lihaixin/openwrt-docker-builder/master/zzz-default-settings.add.${TARGET} -O zzz-default-settings.add
 cat zzz-default-settings.add >> zzz-default-settings
-
-
 echo exit 0 >> zzz-default-settings
 cd -
