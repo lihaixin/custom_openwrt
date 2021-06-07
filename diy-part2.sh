@@ -89,7 +89,7 @@ cd package/lean/default-settings/files/
 rm -rf zzz-default-settings
 wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/package/lean/default-settings/files/zzz-default-settings -O zzz-default-settings
 sed -i '$ d' zzz-default-settings
-wget https://raw.githubusercontent.com/lihaixin/openwrt-docker-builder/master/zzz-default-settings.add.xiaomi.ac2100 -O zzz-default-settings.add
+wget https://raw.githubusercontent.com/lihaixin/openwrt-docker-builder/master/zzz-default-settings.add.x64 -O zzz-default-settings.add
 
 cat zzz-default-settings.add >> zzz-default-settings
 
