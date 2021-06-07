@@ -31,7 +31,7 @@ openssl x509 -sha256 -req -extfile <(printf "subjectAltName=DNS:localhost") -day
 cd -
 
 # 修改控制台和SSH界面 
-banner new route> package/base-files/files/etc/banner
+banner ${TARGET} > package/base-files/files/etc/banner
 echo '-----------------------------------------------' >>package/base-files/files/etc/banner
 echo '%D %V, %C' >>package/base-files/files/etc/banner
 echo '-----------------------------------------------' >>package/base-files/files/etc/banner
