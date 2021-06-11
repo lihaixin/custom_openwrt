@@ -64,7 +64,8 @@ sed -i s'/env python/env python3/g' package/base-files/files/etc/speedtest.py
 
 # add remote help
 wget https://raw.githubusercontent.com/lihaixin/openwrt-docker-builder/master/sbin/help -O package/base-files/files/sbin/help
-
+wget https://raw.githubusercontent.com/lihaixin/openwrt-docker-builder/master/sbin/firstconfig -O package/base-files/files/sbin/firstconfig
+wget https://raw.githubusercontent.com/lihaixin/openwrt-docker-builder/master/sbin/myifnameip -O package/base-files/files/sbin/myifnameip
 # change docker default configure
 sed -i 's/http/https/g' package/lean/luci-app-docker/luasrc/model/cbi/docker.lua
 sed -i 's/9999/9000/g' package/lean/luci-app-docker/luasrc/model/cbi/docker.lua
