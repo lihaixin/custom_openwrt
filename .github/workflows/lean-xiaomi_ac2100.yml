@@ -28,10 +28,11 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
+  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: false
+  UPLOAD_RCLONE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -120,7 +121,20 @@ jobs:
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
-
+    
+    - name: Rclone Upload
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_RCLONE == 'true'
+      run: |
+          cd openwrt
+          curl https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone/
+          cat << EOF > ~/.config/rclone/rclone.conf
+          ${{ secrets.RCLONE_CONFIG }}
+          EOF
+          rclone copy bin/targets google:/share/software/openwrt/$(date +"%Y-%m-%d")/lean --exclude "packages/"
+          echo "::warning file=Firmware-GoogleDrive::Download Link: https://drive.google.com/drive/u/4/folders/1CqjJ-lNrICWUZms7NfTBH4cP_hJaS4XK"
+          
+    
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
